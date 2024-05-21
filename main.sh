@@ -34,6 +34,8 @@ sudo true
 # basic ubuntu packages
 sudo apt-get update -y
 sudo apt-get upgrade -y
+sudo apt install curl
+sudo apt-get install wget gpg
 
 # ML setup
 if [[ $MANUAL_SETUP == 1 ]] then
@@ -59,5 +61,5 @@ fi
 
 echo ""
 echo "Starting installation of applications..."
-# sleep 2
-./applications.sh
+sleep 2
+./applications.sh with_sudo $MANUAL_SETUP

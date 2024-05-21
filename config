@@ -16,7 +16,7 @@ MINICONDA_SETUP=1
 
 # The below options are used for applications. 
 
-MICROSOFT_TEAMS=0
+MICROSOFT_TEAMS=1
 BRAVE=1
 CHROME=1
 SPOTIFY=1

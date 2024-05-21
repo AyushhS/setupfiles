@@ -4,16 +4,16 @@
     gpu drivers
     apt packages (sudo apt upgrade update)
     anaconda
-teams
-brave
-brave setup
-chrome
-spotify
-microsoft to do
-vlc
-discord
-vs code
-deluge
+    teams
+    brave
+    brave setup
+    chrome
+    spotify
+    microsoft to do
+    vlc
+    discord
+    vs code
+    deluge
 gpaste
 chrome - whatsapp 
 chrome - google calender

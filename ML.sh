@@ -7,7 +7,7 @@ source config
 echo "Starting ML Setup..."
 sleep 2
 
-# Super User privilages
+# Intializer of script
 if [[ $1 == 'with_sudo' ]] then
     MANUAL_SETUP=$2
 else
