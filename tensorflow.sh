@@ -1,18 +1,29 @@
 #!/bin/bash
 
+# This script sets up tensorflow with GPU support. 
+
+# NOTE - include tf cpu too. make it indepedent with the CUDA version. pytorch one too.
+
 source /etc/os-release
+source config
+
+if [[ $2 == "dependent" ]] then
+    CUDA_VERSION=$1
+else 
+    read -p "CUDA Version (11/12) [If you do not have CUDA enabled GPU then set the value to 0]: " CUDA_VERSION
+    echo "Provide Super User privilages - "
+    sudo true
+fi
+
+# if only tensorflow cpu needed
+if [[ $CUDA_VERSION == 0 ]] then
+    python3 -m pip install tensorflow
+    exit
+fi
 
 # Starting setup
 echo "Starting Tensorflow GPU installation and setup..."
 sleep 2
-
-# Super User privilages
-if [[ "$@" == "without_sudo" ]] then
-    continue
-else
-    echo "Provide Super User privilages - "
-    sudo true
-fi
 
 # installing nvidia drivers
 echo "Installing NVIDIA drivers..."
@@ -36,15 +47,6 @@ wget https://developer.download.nvidia.com/compute/cudnn/9.1.1/local_installers/
 sudo dpkg -i cudnn-local-repo-ubuntu$UBUNTU_VERSION-9.1.1_1.0-1_amd64.deb
 sudo cp /var/cudnn-local-repo-ubuntu$UBUNTU_VERSION-9.1.1/cudnn-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
-for (( ; ; )) 
-do 
-    read -p "Which CUDA version to install? (11/12): " CUDA_VERSION
-    if  [[ $CUDA_VERSION == 11 || $CUDA_VERSION == 12 ]] then
-        break
-    else 
-        echo "Try again with the correct options!"
-    fi 
-done
 sudo apt-get -y install cudnn-cuda-$CUDA_VERSION
 
 # installing tensorflow

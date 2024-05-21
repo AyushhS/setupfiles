@@ -1,0 +1,29 @@
+# Adjust the variables to correspond to various utility installation. set the variable to 1 for installation, 0 for not.
+
+# To install basic python ML libraries, specifically numpy, pandas, matplotlib, scikit-learn
+ML_SETUP=1
+
+# The below options are only useful if ML_SETUP has been set to 1. 
+
+# Specify the CUDA version (11/12). If you do not have a CUDA enabled system, set the value to 0.
+CUDA_VERSION=12
+# To install pytorch or not
+PYTORCH_SETUP=1
+# To install tensorflow GPU to the system or not.
+TENSORFLOW_SETUP=1
+# To setup anaconda
+MINICONDA_SETUP=1
+
+# The below options are used for applications. 
+
+MICROSOFT_TEAMS=0
+BRAVE=1
+CHROME=1
+SPOTIFY=1
+MICROSOFT_TO_DO=1
+VLC=1
+DISCORD=1
+VS_CODE=1
+DELUGE=1
+CHROME_WHATSAPP_APP=1
+CHROME_GOOGLE_CALENDER=1

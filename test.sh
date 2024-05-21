@@ -1,4 +1,6 @@
 #!/bin/bash
 
-python3 -c "print('hello')" test
-echo $test
+a=$1
+b=$2
+echo $a 
+echo $b

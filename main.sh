@@ -1,5 +1,30 @@
 #!/bin/bash
 
+source ./welcome.sh
+
+# welcome script and confirmation of proceeding with the setup
+welcome
+START=$?
+if [[ $START == 0 ]] then
+    exit
+fi    
+
+# If manual setup is required or config
+MANUAL_SETUP=0
+for (( ; ; )) 
+do 
+    read -p "Manual setup? [This will ask every time if a utility needs to be installed. If No, the script use config file] (Y/N): " confirm
+    if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+        MANUAL_SETUP=1
+        break
+    elif [[ $confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+        source config
+        break
+    else 
+        echo "Try again with the correct options!"
+    fi 
+done 
+
 # Basic setup
 echo "Starting basic setup..."
 sleep 2
@@ -10,28 +35,29 @@ sudo true
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+# ML setup
+if [[ $MANUAL_SETUP == 1 ]] then
+    for (( ; ; )) 
+    do 
+        read -p "ML setup? [includes python libraries for ML, tensorflow, pytorch and miniconda] (Y/N): " confirm
+        if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+            sudo ./ML.sh with_sudo $MANUAL_SETUP
+            break
+        elif [[ $confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+            break
+        else
+            echo "Try again with the correct options!"
+        fi 
+    done
+else
+    if [[ $ML_SETUP == 1 ]] then
+        sudo ./ML.sh with_sudo $MANUAL_SETUP
+    fi
+fi
 
-# installs pip
-sudo apt install python3-pip -y
-pip3 install -U --user pip
+# NOTE - completed till here.
 
-
-
-# Tensorflow setup 
-for (( ; ; )) 
-do 
-    read -p "Tensorflow setup? (Y/N): " confirm
-    if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
-        ./tensorflow.sh without_sudo
-        break
-    else 
-        echo "Try again with the correct options!"
-    fi 
-done
-
-# Python Packages
-pip3 install numpy pandas scikit-learn matplotlib torch torchvision torchaudio
-
-
-
-echo "yes"
+echo ""
+echo "Starting installation of applications..."
+# sleep 2
+./applications.sh

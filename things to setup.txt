@@ -1,9 +1,9 @@
-tensorflow gpu
-gnome (dunno)
-python packages - numpy pandas scikit-learn matplotlib pytorch 
-cuda
-gpu drivers
-apt packages (sudo apt upgrade update)
+    tensorflow gpu
+    python packages - numpy pandas scikit-learn matplotlib pytorch 
+    cuda
+    gpu drivers
+    apt packages (sudo apt upgrade update)
+    anaconda
 teams
 brave
 brave setup
@@ -19,6 +19,6 @@ chrome - whatsapp
 chrome - google calender
 gnome extensions - simple system monitor
 gnome extensions - tiling extensions
-anaconda
+
 
 (more softwares)
