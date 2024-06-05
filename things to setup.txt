@@ -20,5 +20,4 @@ chrome - google calender
 gnome extensions - simple system monitor
 gnome extensions - tiling extensions
 
-
-(more softwares)
+make error condition if net is not available, or if net disconnects any time during the script

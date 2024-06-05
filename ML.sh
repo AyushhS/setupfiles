@@ -8,7 +8,7 @@ echo "Starting ML Setup..."
 sleep 2
 
 # Intializer of script
-if [[ $1 == 'with_sudo' ]] then
+if [[ $1 == 'with_sudo' ]]; then
     MANUAL_SETUP=$2
 else
     echo "Provide Super User privilages - "
@@ -17,10 +17,10 @@ else
     for (( ; ; )) 
     do 
         read -p "Manual setup? [This will ask every time if a utility needs to be installed. If No, the script use config file] (Y/N): " confirm
-        if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+        if  [[ $confirm == [yY] ]] || [[ $confirm == [yY][eE][sS] ]]; then
             MANUAL_SETUP=1
             break
-        elif [[ $confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+        elif [[ $confirm == [Nn] ]] || [[ $confirm == [Nn][Oo] ]]; then
             source config
             break
         else 
@@ -38,11 +38,11 @@ pip3 install numpy pandas scikit-learn matplotlib
 
 # CUDA
 echo ""
-if [[ $MANUAL_SETUP == 1 ]] then
+if [[ $MANUAL_SETUP == 1 ]]; then
     for (( ; ; )) 
     do 
         read -p "CUDA Version (11/12) [If you do not have CUDA enabled GPU then set the value to 0]: " CUDA_VERSION
-        if  [[ $CUDA_VERSION == 11 || $CUDA_VERSION == 12 || $CUDA_VERSION == 0 ]] then
+        if  [[ $CUDA_VERSION == 11 ]] || [[ $CUDA_VERSION == 12 ]] || [[ $CUDA_VERSION == 0 ]]; then
             break
         else
             echo "Try again with the correct options!"
@@ -52,35 +52,35 @@ fi
 
 # Pytorch setup
 echo ""
-if [[ $MANUAL_SETUP == 1 ]] then
+if [[ $MANUAL_SETUP == 1 ]]; then
     for (( ; ; )) 
     do 
         read -p "Pytorch setup? (Y/N): " confirm
-        if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+        if  [[ $confirm == [yY] ]] || [[ $confirm == [yY][eE][sS] ]]; then
             sudo ./pytorch.sh $CUDA_VERSION dependent 
             break
-        elif [[$confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+        elif [[$confirm == [Nn] ]] || [[ $confirm == [Nn][Oo] ]]; then
             break
         else
             echo "Try again with the correct options!"
         fi 
     done
 else
-    if [[ $PYTORCH_SETUP == 1 ]] then
+    if [[ $PYTORCH_SETUP == 1 ]]; then
         sudo ./pytorch.sh $CUDA_VERSION dependent
     fi
 fi
 
 
 # Tensorflow setup 
-if $MANUAL_SETUP; then
+if [[ $MANUAL_SETUP == 1 ]]; then
     for (( ; ; )) 
     do 
         read -p "Tensorflow setup? (Y/N): " confirm
-        if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+        if  [[ $confirm == [yY] ]] || [[ $confirm == [yY][eE][sS] ]]; then
             ./tensorflow.sh $CUDA_VERSION dependent
             break
-        elif [[$confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+        elif [[$confirm == [Nn] ]] || [[ $confirm == [Nn][Oo] ]]; then
             break
         else 
             echo "Try again with the correct options!"
@@ -100,14 +100,14 @@ function miniconda_install {
 }
 
 # miniconda setup
-if $MANUAL_SETUP; then
+if [[ $MANUAL_SETUP == 1 ]]; then
     for (( ; ; )) 
     do 
         read -p "Miniconda setup? (Y/N): " confirm
-        if  [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] then
+        if  [[ $confirm == [yY] ]] || [[ $confirm == [yY][eE][sS] ]]; then
             miniconda_install
             break
-        elif [[$confirm == [Nn] || $confirm == [Nn][Oo] ]] then
+        elif [[$confirm == [Nn] ]] || [[ $confirm == [Nn][Oo] ]]; then
             break
         else 
             echo "Try again with the correct options!"

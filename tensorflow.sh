@@ -7,7 +7,7 @@
 source /etc/os-release
 source config
 
-if [[ $2 == "dependent" ]] then
+if [[ $2 == "dependent" ]]; then
     CUDA_VERSION=$1
 else 
     read -p "CUDA Version (11/12) [If you do not have CUDA enabled GPU then set the value to 0]: " CUDA_VERSION
@@ -16,7 +16,7 @@ else
 fi
 
 # if only tensorflow cpu needed
-if [[ $CUDA_VERSION == 0 ]] then
+if [[ $CUDA_VERSION == 0 ]]; then
     python3 -m pip install tensorflow
     exit
 fi
@@ -54,7 +54,7 @@ pip install tensorflow[and-cuda]
 
 # testing 
 GPUs=$(python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))")
-if [[ GPUs == '[]' ]] then
+if [[ GPUs == '[]' ]]; then
     echo "Install Unsucessful. Check the script for errors."
 else 
     echo "Tensorflow installed Successfully with $GPUs initialized."
