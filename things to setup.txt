@@ -21,3 +21,6 @@ gnome extensions - simple system monitor
 gnome extensions - tiling extensions
 
 make error condition if net is not available, or if net disconnects any time during the script
+mounting
+settings
+sudo for applications.sh

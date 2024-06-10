@@ -29,9 +29,23 @@ else
     done 
 fi
 
+# installs python12
+wget https://www.python.org/ftp/python/3.12.4/Python-3.12.4.tgz
+tar -xf Python-3.12.4.tgz
+cd Python-3.12.4
+./configure --enable-optimizations
+sudo make install
+cd ..
+
+
 # installs pip
 sudo apt install python3-pip -y
+sudo apt-get install python-is-python3
 pip3 install -U --user pip
+
+# makes a ML virtual environment
+python3 -m venv ML
+source Ml/bin/activate
 
 # Python Libraries
 pip3 install numpy pandas scikit-learn matplotlib
@@ -118,3 +132,5 @@ else
         miniconda_install
     fi 
 fi
+
+deactivate

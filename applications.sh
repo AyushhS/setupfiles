@@ -83,4 +83,17 @@ if [[ $? == 1 ]]; then
     sudo apt install brave-browser
 fi
 
+for (( ; ; )) 
+do 
+    read -p "Do you want to put all the installed applications on the dock (Y/N) [this will only work when all applications are installed]: " confirm
+    if  [[ $confirm == [yY] ]] || [[ $confirm == [yY][eE][sS] ]]; then
+        gsettings set org.gnome.shell favorite-apps "['spotify_spotify.desktop', 'code_code.desktop', 'discord_discord.desktop', 'brave-browser.desktop', 'microsoft-todo-unofficial_microsoft-todo-unofficial.desktop', 'teams-for-linux_teams-for-linux.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"
+        break
+    elif [[ $confirm == [Nn] ]] || [[ $confirm == [Nn][Oo] ]]; then
+        break
+    else
+        echo "Try again with the correct options!"
+    fi 
+done
+
 # TODO - brave setup

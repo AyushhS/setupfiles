@@ -1,5 +1,12 @@
 # Adjust the variables to correspond to various utility installation. set the variable to 1 for installation, 0 for not.
 
+# Sytem details
+SYSTEM_NAME=cornflaek
+DRIVE_ONE_NAME="Personal Stuff"
+DRIVE_TWO_NAME="Personal Stuff 2"
+DRIVE_ONE_MOUNTING_POINT="/dev/nvme1n1p4"
+DRIVE_TWO_MOUNTING_POINT="/dev/nvme0n1p2"
+
 # To install basic python ML libraries, specifically numpy, pandas, matplotlib, scikit-learn
 ML_SETUP=1
 
